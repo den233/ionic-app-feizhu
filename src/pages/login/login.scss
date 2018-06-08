@@ -20,6 +20,11 @@ page-login {
         border: 1px solid #f53d3d;
         box-shadow: none;
       }
+      .item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner, .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
+        border :1px solid  #32db64;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
       .item-md.item-input.input-has-focus .item-inner {
         border-color: #488aff;
         box-shadow: none;

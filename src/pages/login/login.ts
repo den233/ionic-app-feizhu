@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from "@angular/forms";
+import {HttpServiceProvider} from '../../providers/http-service/http-service'
 /**
  * Generated class for the LoginPage page.
  *
@@ -26,7 +27,13 @@ export class LoginPage {
     password: "",
     checkcode: ""
   };
-  constructor( private formBuilder: FormBuilder,public navCtrl: NavController, public navParams: NavParams) {
+
+  constructor( 
+    private formBuilder: FormBuilder,
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private HttpServiceProvider:HttpServiceProvider
+    ) {
     this.loginForm = this.formBuilder.group({
       name: ["", Validators.required],
       password: ["", Validators.required],
@@ -43,6 +50,24 @@ export class LoginPage {
     } else {
       this.togglePassword = "text";
     }
+  }
+  login(){
+    var $this=this
+    if($this.loginForm.valid){
+      console.log(this.loginForm.value);
+      let name = $this.user.name.replace(/\s+/g,"")
+      let data = {
+        principal: name,
+        password: $this.user.password
+      };
+      $this.HttpServiceProvider.postFormData('http://xieku.longliqi.com/app/login.html',data)
+      .subscribe(
+        data => {
+          console.log(data)
+        },
+        err=>{}
+      ) 
+  }
   }
 
 }
