@@ -5,16 +5,18 @@
           <use xlink:href="#icon-denglu-logoda"></use>
         </svg>
       </div>
+      
   <form [formGroup]="loginForm" (ngSubmit)="login()">
       <ion-list class="login-form">
           <ion-item>
             <ion-label class="left-icon" no-margin no-padding col-2>
               <i class="iconfont icon-large">&#xe65a;</i>
             </ion-label>
-            <ion-input type="text" placeholder="请输入会员编码" formControlName="name" [(ngModel)]="user.name" clearInput></ion-input>
+            <ion-input   type="text" placeholder="请输入会员编码" formControlName="name" [(ngModel)]="user.name" clearInput></ion-input>
             <ion-note item-end col-1>
             </ion-note>
            </ion-item>
+           <p [hidden]="!loginForm.hasError('required','name')">用户名必填的</p>
            <ion-item margin-top>
               <ion-label class="left-icon" no-margin no-padding col-2>
                 <i class="iconfont icon-large">&#xe65c;</i>
