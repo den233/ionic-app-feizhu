@@ -35,7 +35,7 @@ export class LoginPage {
     private HttpServiceProvider:HttpServiceProvider
     ) {
     this.loginForm = this.formBuilder.group({
-      name: ["", Validators.required],
+      name: ["",[Validators.required,Validators.minLength(4)] ],
       password: ["", Validators.required],
       islogin: [""]
     });

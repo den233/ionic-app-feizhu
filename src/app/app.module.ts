@@ -13,13 +13,16 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import{ComponentsModule}from'../components/components.module';
 import { HttpServiceProvider } from '../providers/http-service/http-service';
 import { LoginProvider } from '../providers/login/login';
+ 
+ 
 @NgModule({
   declarations: [
     MyApp,
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+ 
   ],
   imports: [
     BrowserModule,

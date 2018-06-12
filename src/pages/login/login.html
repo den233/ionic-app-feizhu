@@ -7,26 +7,34 @@
       </div>
       
   <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <ion-input style="position: absolute;z-index: -1;top:-1000px"   type="text" ></ion-input>
+      <ion-input style="position: absolute;z-index: -1;top:-1000px"   type="password" ></ion-input>
       <ion-list class="login-form">
           <ion-item>
             <ion-label class="left-icon" no-margin no-padding col-2>
               <i class="iconfont icon-large">&#xe65a;</i>
             </ion-label>
-            <ion-input   type="text" placeholder="请输入会员编码" formControlName="name" [(ngModel)]="user.name" clearInput></ion-input>
+          
+            <ion-input    type="text" placeholder="请输入会员编码" formControlName="name" [(ngModel)]="user.name" clearInput></ion-input>
             <ion-note item-end col-1>
             </ion-note>
            </ion-item>
-           <p [hidden]="!loginForm.hasError('required','name')">用户名必填的</p>
+           <div [hidden]="!loginForm.hasError('required','name') && loginForm.get('name').touched" >
+              userName is required!
+            </div>
+            
+            <p class='error' [hidden]="!loginForm.hasError('minlength','name')">用户名长度过短</p>
            <ion-item margin-top>
               <ion-label class="left-icon" no-margin no-padding col-2>
                 <i class="iconfont icon-large">&#xe65c;</i>
               </ion-label>
-              <ion-input [type]="togglePassword" placeholder="请输入登录密码" formControlName="password" [(ngModel)]="user.password" clearInput></ion-input>
+              <ion-input autocomplete = "off" [type]="togglePassword" placeholder="请输入登录密码" formControlName="password" [(ngModel)]="user.password" clearInput></ion-input>
               <ion-note item-end (click)="togglePwd()" col-1>
                 <i *ngIf="togglePassword == 'text'" class="iconfont icon-eyes">&#xe632;</i>
                 <i *ngIf="togglePassword == 'password'" class="iconfont icon-eyes">&#xe631;</i>
               </ion-note>
             </ion-item>
+             
             <div class="wrap">
                 <ion-row class="checkbox-main">
                   <ion-col (click)="save()">
