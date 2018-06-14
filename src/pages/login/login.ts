@@ -63,7 +63,7 @@ export class LoginPage {
       $this.HttpServiceProvider.postFormData('http://xieku.longliqi.com/app/login.html',data)
       .subscribe(
         data => {
-          this.navCtrl.push('homepage');
+          this.navCtrl.push('mainpage');
           console.log(data);
         },
         err=>{}
