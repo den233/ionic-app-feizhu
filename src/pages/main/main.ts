@@ -45,6 +45,11 @@ export class MainPage {
   onScroll(){
     console.log(11)
   }
+  go_order(){
+    this.navCtrl.push('airpage', {
+      'id': 'detailInfo'
+    });
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad MainPage');
     var ionclass=getByClass(document, "silde-news");
